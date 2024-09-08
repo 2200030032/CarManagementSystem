@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<head>
+    <title>Car Showroom Management System</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <h:form id="loginForm" class="login-form">
+            <h2>Customer Login</h2>
+            <div class="input-group">
+                <h:outputLabel for="username" value="Username" />
+                <h:inputText id="username" value="#{userbean.username}" required="true" />
+            </div>
+            <div class="input-group">
+                <h:outputLabel for="password" value="Password" />
+                <h:inputSecret id="password" value="#{userbean.password}" required="true" />
+            </div>
+             <div class="input-group">
+                <h:outputLabel for="repassword" value="RePassword" />
+                <h:inputSecret id="repassword" value="#{userbean.repassword}" required="true" />
+            </div>
+            <h:commandButton value="Submit" action="#{userbean.validateCustomerlogin()}" styleClass="submit-button"/>
+        </h:form>
+    </div>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Add Car</title>
+    <h:outputStylesheet name="css/carhomestyle.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #4CAF50;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center; /* Center the form content */
+        }
+
+        .form-header {
+            margin-bottom: 20px;
+        }
+
+        .form-header h1 {
+            margin: 0;
+            color: #333;
+        }
+
+        .form-header p {
+            color: #666;
+        }
+
+        .form-grid {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center align form items */
+            gap: 15px; /* Add space between form elements */
+        }
+
+        h\\:outputLabel {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+            text-align: left; /* Align labels to the left */
+            width: 100%; /* Full width for labels */
+        }
+
+        h\\:inputText {
+            width: 100%;
+            max-width: 500px; /* Limit input field width */
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .commandButton {
+            background-color: #007BFF; /* Blue color */
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 18px;
+            margin: 20px auto;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .commandButton:hover {
+            background-color: #0056b3; /* Darker blue */
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            width: 260px;
+            height: 100%;
+            background: #424242;
+            overflow-x: hidden;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        .sidebar ul {
+            margin-top: 20px;
+        }
+
+        .sidebar ul li {
+            width: 100%;
+            list-style: none;
+        }
+
+        .sidebar ul li:hover {
+            background: #616161;
+        }
+
+        .sidebar ul li:hover a {
+            color: #2a9df4; /* Adjusted HSL value */
+        }
+
+        .sidebar ul li a {
+            width: 100%;
+            text-decoration: none;
+            color: #e0e0e0;
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar ul li a i {
+            min-width: 60px;
+            font-size: 24px;
+            text-align: center;
+        }
+    </style>
+</h:head>
+<h:body>
+
+    <div class="sidebar">
+        <ul>
+            <li>
+                <a href="adminhome.jsp">
+                    <i class="fas fa-th-large"></i>
+                    <div>Home</div>
+                </a>
+            </li>
+            <li>
+                <a href="addcar.jsf">
+                    <i class="fas fas fa-car"></i>
+                    <div>Add Cars</div>
+                </a>
+            </li>
+            <li>
+                <a href="viewallcars.jsf">
+                    <i class="fas fas fa-car"></i>
+                    <div>View All Cars</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <div class="form-header">
+            <h1>Add New Car</h1>
+            <p>Please fill out the form below to add a new car to the inventory.</p>
+        </div>
+
+        <h:form enctype="multipart/form-data">
+            <h:panelGrid columns="2" styleClass="form-grid">
+
+                <h:outputLabel for="make" value="Make: " />
+                <h:inputText id="make" value="#{carbean.make}" required="true" />
+
+                <h:outputLabel for="model" value="Model: " />
+                <h:inputText id="model" value="#{carbean.model}" required="true" />
+
+                <h:outputLabel for="year" value="Year: " />
+                <h:inputText id="year" value="#{carbean.year}" required="true" />
+
+                <h:outputLabel for="color" value="Color: " />
+                <h:inputText id="color" value="#{carbean.color}" required="true" />
+
+                <h:outputLabel for="bodytype" value="Body Type: " />
+                <h:inputText id="bodytype" value="#{carbean.bodytype}" required="true" />
+
+                <h:outputLabel for="transmission" value="Transmission: " />
+                <h:inputText id="transmission" value="#{carbean.transmission}" required="true" />
+
+                <h:outputLabel for="fueltype" value="Fuel Type: " />
+                <h:inputText id="fueltype" value="#{carbean.fueltype}" required="true" />
+                
+                <label for="carPrice">Car Price</label>
+                <h:inputText id="carPrice" type="number" class="form-control" placeholder="Enter car price" value="#{carbean.price}" />
+                
+                <label for="carImage">Upload Image</label>
+                <h:inputFile id="carImage" class="form-control-file" value="#{carbean.carImage}" />
+                
+            </h:panelGrid>
+
+            <h:commandButton value="Add Car" action="#{carbean.Addcar()}" styleClass="commandButton"/>
+        </h:form>
+    </div>
+</h:body>
+</html>

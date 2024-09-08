@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+    <title>Employee Update</title>
+    <h:outputStylesheet name="css/carhomestyle.css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/reemixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+    <title>Employee Update</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: black;
+            padding: 10px;
+        }
+
+        .header h1 {
+            color: white;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-header h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        .form-header u {
+            text-decoration: underline;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+        }
+
+        h\\:outputLabel {
+            font-weight: bold;
+            color: #333;
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        h\\:inputText {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .commandButton {
+            grid-column: span 2;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .commandButton:hover {
+            background-color: #0056b3;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            width: 260px;
+            height: 100%;
+            background: #424242;
+            overflow-x: hidden;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        .sidebar ul {
+            margin-top: 20px;
+        }
+
+        .sidebar ul li {
+            width: 100%;
+            list-style: none;
+        }
+
+        .sidebar ul li:hover {
+            background: #616161;
+        }
+
+        .sidebar ul li:hover a {
+            color: #2a9df4;
+        }
+
+        .sidebar ul li a {
+            width: 100%;
+            text-decoration: none;
+            color: #e0e0e0;
+            height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar ul li a i {
+            min-width: 60px;
+            font-size: 24px;
+            text-align: center;
+        }
+    </style>
+</h:head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <ul>
+        <li>
+            <a href="adminhome.jsp">
+                <i class="fas fa-th-large"></i>
+                <div>Home</div>
+            </a>
+        </li>
+        <li>
+            <a href="empadd.jsf">
+                <i class="fas fas fa-user"></i>
+                <div>Add Seller</div>
+            </a>
+        </li>
+        <li>
+            <a href="viewallemps.jsf">
+                <i class="fas fas fa-user"></i>
+                <div>View All Seller</div>
+            </a>
+        </li>
+        <li>
+            <a href="updateemp.jsf">
+                <i class="fas fas fa-user"></i>
+                <div>Update Seller</div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+<div class="container">
+    <div class="form-header">
+        <h3><u>Employee Details Update</u></h3>
+    </div>
+
+    <center>
+        <h:form>
+            <h:panelGrid columns="3" cellpadding="5" styleClass="form-grid">
+
+                <h:outputLabel for="id" value="Enter ID" />
+                <h:inputText id="id" required="true" requiredMessage="Enter ID" value="#{empbean.id}"/>
+                <h:message for="id" style="color:red"/>
+
+                <h:outputLabel for="firstName" value="Enter First Name:" />
+                <h:inputText id="firstName" required="true" requiredMessage="Enter First Name" value="#{empbean.fisrtname}"/>
+                <h:message for="firstName" style="color:red"/>
+
+                <h:outputLabel for="lastName" value="Enter Last Name:" />
+                <h:inputText id="lastName" required="true" requiredMessage="Enter Last Name" value="#{empbean.secondname}"/>
+                <h:message for="lastName" style="color:red"/>
+
+                <h:outputLabel for="salary" value="Enter Salary:" />
+                <h:inputText id="salary" required="true" requiredMessage="Enter Salary" validatorMessage="The Salary must be greater than 1K" value="#{empbean.salary}">
+                    <f:validateDoubleRange minimum="1000.0"/>
+                </h:inputText>
+                <h:message for="salary" style="color:red"/>
+
+                <h:outputLabel for="contact" value="Enter Contact:" />
+                <h:inputText id="contact" required="true" requiredMessage="Enter Contact" validatorMessage="Contact Number must contain 10 digits" value="#{empbean.contactno}">
+                    <f:validateRegex pattern="[6789][0-9]{9}"/>
+                </h:inputText>
+                <h:message for="contact" style="color:red" />
+
+                <h:outputLabel />
+                <h:commandButton value="Submit" action="#{empbean.update()}" styleClass="commandButton" />
+            </h:panelGrid>
+        </h:form>
+    </center>
+</div>
+
+</body>
+</html>
